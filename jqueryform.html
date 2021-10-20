@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>1st Form</title>
+
+<!-- Google Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!---------------------------------------------------------------------------------------------->
+
+	<!-- JQuery starts here: -->
+	<script type="text/javascript">
+
+		$("document").ready( function() {
+		
+			// Using class="#payform" for all the links:
+			$("#payform").submit( function () {
+			
+			
+				//Obtain user's input:
+				var empname = $("#empname").val(); //Name of employee
+				var payrate = parseFloat( $("#payrate").val() ); //Get payrate in decimals
+				var hours = parseInt( $("#hours").val() ); //Get hours worked
+				var usercolor = $("#usercolor").val(); //Pick color
+				var userfont = $("#userfont").val();//Pick font from list
+				
+				//Set the color and font of div#output:
+				$("#output").css( "color", usercolor );
+				$("#output").css( "font-family", userfont );
+				$("body").css( "background-color", usercolor );
+	
+	
+				//Calculat total pay:
+				var total = payrate * hours;
+				
+				
+				//Construct output:
+				var msg = "<div>Employee name is: " + empname + ".</div>";
+					msg += "<div>Hours worked is: " + hours + "h.</div>";
+					msg += "<div>Payrate is: $" + payrate.toFixed(2) + ".</div>";
+					msg += "<div>Total pay rate is: $" + total.toFixed(2) + ".</div>";			
+				
+				
+				//Display Output:
+				$("#output").hide();
+				$("#output").html( msg );
+				$("#output").show( "slide" );
+	
+			} );//ends submit handler code!!!!
+		} ); // ends document.ready!!!!!!
+		
+	</script>
+
+<style type="text/css">
+
+body {
+	background-color: #F3EFE0;
+	font-family: arial;
+	color: #217C7E;
+}
+#contentwrap {
+	border: 8px #9A3334 solid;
+	padding: 20px;
+	width: 600px;
+	margin: 20px auto 0px auto;
+	border-radius: 25px;
+	text-align: center;
+	background: white;
+}
+
+#heading {
+	font-size: 2.2em;
+	border-bottom: 6px #217C7E double;
+	padding: 10px 0px 10px 0px;
+	color: darkred;
+}
+
+#formdiv {
+	text-align: center;
+	padding-top: 25px;
+}
+
+.formtext {
+	margin-top: 3px;
+}
+
+#endnum {
+	background-color: lightgray;
+	border: 2px darkred solid;
+}
+
+#result {
+	font-size: 1em;
+	color: #FF0000;
+}
+
+.spacer {
+	margin-top: 12px;
+	
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="contentwrap">
+
+	<div id="heading">Using jQuery with a form</div>
+
+		<div id="payformdiv">
+
+			<form id="payform" action="javascript:void(0);">
+			
+				<div class="spacer">Enter employee name</div>
+					<input type="text" id="empname">
+				
+				<div class="spacer">Enter payrate</div>
+					<input type="text" id="payrate">
+				
+				<div class="spacer">Enter hours worked</div>
+					<input type="text" id="hours">
+				
+				<div class="spacer">Enter output color</div>
+					<input type="text" id="usercolor">
+				
+				<div class="spacer">Select font</font>
+				
+					<select id="userfont">
+						<option value="arial">Arial</option>
+						<option value="comic sans ms">Comic Sans MS</option>
+						<option value="times new roman">Times New Roman</option>
+					</select>
+				
+		
+				
+				
+				<div class="spacer">
+					<input type="submit" value="Calculate Pay">
+			</div>
+			
+			</form>
+		</div> <!-- ends div#payformdiv -->
+
+		<div id="output" style="display:none;"></div>
+
+	</div>
+
+</div> <!-- ends div#contentwrap -->
+
+</body>
+</html>
